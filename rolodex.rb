@@ -1,12 +1,23 @@
 class Rolodex
+
 	def initialize
 		@contacts = []
-		@contact_id = 1000 #everytime new contact added to DB, contact pushed into array, will also give it particular identifier
+		@id = 1000
+	end
+
+	def contacts
+		@contacts
 	end
 
 	def add_contact(contact)
+		contact.id = @id
 		@contacts << contact
-		contact.id = @contact_id
-		@contact.id += 1
+		@id += 1
 	end
+
+	def search(id)
+		@contacts.find {|con| con.id == id}	
+	end
+
 end
+

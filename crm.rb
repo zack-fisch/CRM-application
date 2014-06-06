@@ -1,7 +1,12 @@
 require_relative 'contact' 
 require_relative 'rolodex'
 class CRM
-	attr_reader :name
+	attr_accessor :name
+
+	def self.run(name) #a class method, called on class, not on object
+		crm = new(name)
+		crm.main_menu
+	end
 
 	# def name
 	# 	@name
@@ -59,6 +64,6 @@ class CRM
 	end
 end
 
-
-crm = CRM.new("Bitmaker Labs CRM")
-crm.main_menu
+CRM.run("Bitmaker Labs CRM")
+# crm = CRM.new("Bitmaker Labs CRM")
+# crm.main_menu
