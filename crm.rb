@@ -11,16 +11,23 @@ end
 def main_menu
 	print_main_menu
   selection = gets.chomp.to_i
-	# call_option(selection)
+	call_option(selection)
 end
 
 def call_option(selection)
-	add_new_contact if selection == 1
-	modify_contact if selection == 2
-	delete_contact if selection == 3
-	display_contacts if selection == 4
-	display attribute if selection == 5
-	exiit_crm if selection == 6
+	case selection
+	when 1 then add_new_contact
+	when 2 then modify_contact
+	when 3 then delete_contact
+	when 4 then modify_contact
+	when 5 then display_contacts
+	when 6
+		puts "Goodbye"
+		exit_crm
+	else 
+		puts "Invalid option. Please try again"
+		main_menu
+	end
 end
 
 main_menu
