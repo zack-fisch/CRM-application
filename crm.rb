@@ -1,3 +1,5 @@
+require_relative 'contact' 
+require_relative 'rolodex'
 class CRM
 	attr_reader :name
 
@@ -55,30 +57,6 @@ class CRM
 	  @rolodex.add_contact(Contact.new(first_name, last_name, email, note))
 	  main_menu
 	end
-end
-
-class Contact
-	attr_accessor :id, :first_name, :last_name, :email, :note
-	def initialize (first_name, last_name, email, note)
-		@first_name = first_name
-		@last_name = last_name
-		@email = email
-		@note = note
-	end
-end
-
-class Rolodex
-	def initialize
-		@contacts = []
-		@contact_id = 1000 #everytime new contact added to DB, contact pushed into array, will also give it particular identifier
-	end
-
-	def add_contact(contact)
-		@contacts << contact
-		contact.id = @contact_id
-		@contact.id += 1
-	end
-	
 end
 
 
