@@ -9,5 +9,3 @@ class Contact
 	end
 end
 
-
-

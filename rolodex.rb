@@ -1,5 +1,5 @@
 class Rolodex
-
+	attr_reader :id ,:contacts
 	def initialize
 		@contacts = []
 		@id = 1000
@@ -16,7 +16,9 @@ class Rolodex
 	end
 
 	def search(id)
-		@contacts.find {|con| con.id == id}	
+		#@contacts.each {|contact| return contact if contact.id == id}	
+		found_contact = @contacts.find {|contact| contact.id == id}	 #Need further explanation
+		return found_contact
 	end
 
 end
