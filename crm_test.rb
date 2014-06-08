@@ -22,22 +22,34 @@ class CRM
 	def main_menu
 		print_main_menu
 		user_selected  = gets.chomp
-		if user_selected.downcase == "no"
-			main_menu
-		else
-			user_selected = user_selected.to_i
-			call_option(user_selected)
+		case user_selected
+			when "no"
+				main_menu
+			when "1", "2", "3", "4", "5", "6", "7"
+		    user_selected = user_selected.to_i
+		    call_option(user_selected)
+	    else
+				main_menu
 		end
 	end
 
 	def call_option(user_selected)
-		add_new_contact if user_selected == 1
-		modify_existing_contact if user_selected == 2
-		delete_contact if user_selected == 3
-		display_contacts if user_selected == 4
-		display_contact if user_selected == 5
-		display_attribute if user_selected == 6
-		exit_program if user_selected == 7
+		case user_selected
+			when 1
+				add_new_contact
+			when 2
+				modify_existing_contact
+			when 3
+				delete_contact
+			when 4
+				display_contacts
+			when 5
+				display_contact
+			when 6
+				display_attribute
+			when 7
+				exit_program
+		end
 	end
 
 	def add_new_contact 
@@ -139,8 +151,10 @@ class CRM
  		elsif displayed_attribute == "note"
  			@rolodex.contacts.each do |contact| 
  			 	puts contact.note
- 			 	main_menu 
  			 end
+ 			 main_menu 
+ 		else
+ 			main_menu
  		end
  	end
  		
