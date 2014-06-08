@@ -123,6 +123,28 @@ class CRM
  		puts "Thank you for using CLI CRM!"
  	end
 
+ 	def display_attribute
+ 		puts "Please enter attribute to be displayed"
+ 		displayed_attribute = gets.chomp
+ 		if displayed_attribute.downcase == "name"
+ 			 @rolodex.contacts.each do |contact| 
+ 			 	puts contact.first_name + " " + contact.last_name
+ 			 end
+ 			 main_menu
+ 		elsif displayed_attribute == "email"
+ 			@rolodex.contacts.each do |contact| 
+ 			 	puts contact.email
+ 			 end
+ 			 main_menu
+ 		elsif displayed_attribute == "note"
+ 			@rolodex.contacts.each do |contact| 
+ 			 	puts contact.note
+ 			 	main_menu 
+ 			 end
+ 		end
+ 	end
+ 		
+
 	def self.run #(name) #class method, call this on CRM
 		crm = CRM.new #(name) #creates new instance of CRM
 		crm.main_menu
