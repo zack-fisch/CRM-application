@@ -23,8 +23,6 @@ class CRM
 		print_main_menu
 		user_selected  = gets.chomp
 		case user_selected
-			when "no"
-				main_menu
 			when "1", "2", "3", "4", "5", "6", "7"
 		    user_selected = user_selected.to_i
 		    call_option(user_selected)
@@ -138,26 +136,25 @@ class CRM
  	def display_attribute
  		puts "Please enter attribute to be displayed"
  		displayed_attribute = gets.chomp
- 		if displayed_attribute.downcase == "name"
- 			 @rolodex.contacts.each do |contact| 
- 			 	puts contact.first_name + " " + contact.last_name
- 			 end
- 			 main_menu
- 		elsif displayed_attribute == "email"
+ 		case displayed_attribute
+ 		when "name"
  			@rolodex.contacts.each do |contact| 
- 			 	puts contact.email
- 			 end
- 			 main_menu
- 		elsif displayed_attribute == "note"
+	 			puts contact.first_name + " " + contact.last_name
+	 			end
+ 			main_menu
+ 		when "email"
  			@rolodex.contacts.each do |contact| 
- 			 	puts contact.note
- 			 end
- 			 main_menu 
- 		else
+	 			puts contact.email
+	 			end
+ 			main_menu
+ 		when "note"
+ 			@rolodex.contacts.each do |contact| 
+ 				puts contact.note end
+ 			main_menu 
+ 		else 
  			main_menu
  		end
  	end
- 		
 
 	def self.run #(name) #class method, call this on CRM
 		crm = CRM.new #(name) #creates new instance of CRM
